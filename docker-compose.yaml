@@ -1,7 +1,7 @@
 version: "3.1"
 services:
   sensate_mqtthandler:
-    image: sensateiot/mqtthandler:v0.1.0
+    image: sensateiot/mqtthandler:v0.1.1
     environment:
       DOTNET_ENVIRONMENT: "Production"
       ASPNETCORE_ENVIRONMENT: "Production"
