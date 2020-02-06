@@ -1,0 +1,17 @@
+version: "3.1"
+services:
+  sensate_mqtthandler:
+    image: sensateiot/mqtthandler:v0.0.4
+    environment:
+      DOTNET_ENVIRONMENT: "Production"
+      ASPNETCORE_ENVIRONMENT: "Production"
+      SENSATE_MQTTHANDLER_APPSETTINGS: "/app/etc/appsettings.json"
+      PATH: "/usr/bin:/usr/sbin:/sbin:/bin:/app/bin:$PATH"
+    networks:
+      - base-net
+    volumes:
+      - ./Settings:/app/etc:rw
+
+networks:
+  base-net:
+    driver: bridge
