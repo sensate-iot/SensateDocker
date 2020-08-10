@@ -74,6 +74,6 @@
 
   "Storage": {
     "StorageType": "FileSystem",
-    "Path": ""
+    "Path": "/app/storage"
   }
 }

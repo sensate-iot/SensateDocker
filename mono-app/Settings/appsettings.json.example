@@ -1,0 +1,123 @@
+{
+  "Logging": {
+    "IncludeScopes": false,
+    "Debug": {
+      "LogLevel": {
+        "Default": "Debug",
+        "Microsoft": "Warning",
+        "System": "Warning"
+      }
+    },
+    "Console": {
+      "LogLevel": {
+        "Default": "Debug",
+        "Microsoft": "Warning",
+        "System": "Warning"
+      }
+    }
+  },
+
+  "System": {
+    "ProxyLevel": 1,
+    "InstanceName": "kerby",
+	"MeasurementAuthProxyUrl": "http://host.docker.internal:8080/v1/processor/measurements",
+    "MessageAuthProxyUrl": "http://host.docker.internal:8080/v1/processor/messages"
+  },
+
+  "Cache": {
+    "Enabled": true,
+    "Interval": 1000, 
+    "Type": "Distributed"
+  },
+
+  "Database": {
+    "MongoDB": {
+      "DatabaseName": "Sensate",
+      "ConnectionString": "mongodb://root:root@host.docker.internal:27017/admin",
+      "MaxConnections": 1000
+    },
+    "PgSQL": {
+      "ConnectionString": "User ID = postgres;Password=postgres;Server=host.docker.internal;Port=5432;Database=Sensate"
+    },
+    "Redis": {
+      "Host": "host.docker.internal",
+      "InstanceName": "Sensate"
+    }
+  },
+
+  "Authentication": {
+    "PublicUrl": "login.dev.sensateiot.com/confirm",
+    "UpdateEmailUrl": "dev.sensateiot.com:4200/apps/dashboard/confirm-update-email",
+    "Scheme":  "http", 
+    "JwtRefreshExpireMinutes": 43200,
+    "JwtKey": "",
+    "JwtIssuer": "api.dev.sensateiot.com:5000/auth",
+    "JwtExpireMinutes": 43200,
+    "PrimaryAuthHost": false 
+  },
+
+  "Mqtt": {
+    "PublicBroker": {
+      "Username": "",
+      "Password": "",
+      "Ssl": "false",
+      "Port": 1883,
+      "Host": "host.docker.internal",
+	  "ActuatorTopic": "sensate/actuator/$sensorId",
+	  "MeasurementTopic": "$share/sensate/sensate/measurements",
+      "BulkMeasurementTopic": "$share/sensate/sensate/measurements/bulk",
+      "MessageTopic":  "$share/sensate/sensate/messages",
+      "BulkMessageTopic":  "$share/sensate/sensate/messages/bulk"
+    },
+    "InternalBroker": {
+      "Username": "",
+      "Password": "",
+      "Ssl": "false",
+      "Port": 1883,
+      "Host": "host.docker.internal",
+      "AuthorizedBulkMeasurementTopic": "$share/trigger-service/sensate-auth/internal/measurements/bulk",
+      "AuthorizedBulkMessageTopic": "$share/trigger-service/sensate-auth/internal/messages/bulk",
+	  "InternalBulkMeasurementTopic": "sensate/internal/measurements/bulk",
+      "InternalBulkMessageTopic": "sensate/internal/messages/bulk"
+    }
+  },
+
+  "Timeouts": {
+    "MessageTimeout": 5,
+    "MailTimeout": 2,
+    "MqttTimeout": 0,
+    "Httptimeout": 1 
+  } ,
+
+  "Mail": {
+    "Provider": "SendGrid",
+    "FromName": "Sensate IoT",
+    "From": "noreply@sensateiot.com",
+    "SendGrid": {
+      "Username": "bietje",
+      "Key": ""
+    },
+    "Smtp": {
+      "Ssl": true,
+      "Port": 587,
+      "Host": "mail.bietje.net",
+      "Username": "root@bietje.net",
+      "Password": ""
+    }
+  },
+
+  "Storage": {
+    "StorageType": "FileSystem",
+    "Path": "/app/storage"
+  },
+
+  "Text": {
+    "Provider": "Twillio",
+    "AlphaCode": "Sensate IoT",
+    "Twilio": {
+      "AccountSid": "",
+      "AuthToken": "",
+      "PhoneSid": ""
+    }
+  }
+}

@@ -47,6 +47,16 @@ services:
     volumes:
       - ./LiveDataHandler:/app/dist/settings:rw
       
+  sensate_authservice:
+    image: sensateiot/auth-service:staging
+    ports:
+      - "8080:8080"
+    networks:
+      - base-net
+    volumes:
+      - ./AuthServiceSettings:/app/etc:rw
+      - ./Logging:/app/logging:rw
+      
   sensate_authapi:
     image: sensateiot/auth-api:staging
     environment:

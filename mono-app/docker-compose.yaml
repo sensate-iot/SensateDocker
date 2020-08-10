@@ -41,11 +41,21 @@ services:
   sensate_livedatahandler:
     image: sensateiot/livedatahandler:staging
     ports:
-      - "5000:5000"
+      - "4600:5000"
     networks:
       - base-net
     volumes:
       - ./LiveDataHandler:/app/dist/settings:rw
+      
+  sensate_authservice:
+    image: sensateiot/auth-service:staging
+    ports:
+      - "8080:8080"
+    networks:
+      - base-net
+    volumes:
+      - ./AuthServiceSettings:/app/etc:rw
+      - ./Logging:/app/logging:rw
       
   sensate_authapi:
     image: sensateiot/auth-api:staging
@@ -59,7 +69,7 @@ services:
     networks:
       - base-net
     volumes:
-      - ./Settings:/app/etc:rw
+      - ./PrimaryAuthSettings:/app/etc:rw
       
   sensate_dataapi:
     image: sensateiot/data-api:staging
