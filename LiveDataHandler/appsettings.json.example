@@ -1,0 +1,28 @@
+﻿{
+  "web": {
+    "port": 5000,
+    "secret": "",
+    "timeout": 750
+  },
+  "mongoDB": {
+    "connectionString": "mongodb://host.docker.internal:27017/Sensate",
+    "maxConnections":300
+  },
+  "postgresql": {
+    "user": "postgres",
+    "host": "host.docker.internal",
+    "database": "sensate",
+    "password": "sensate",
+    "port": 5432 
+  },
+  "mqtt": {
+    "username": "",
+    "password": "",
+    "ssl": "false",
+    "port": 1883,
+    "host": "host.docker.internal",
+    "internalMeasurementTopic": "sensate/internal/measurements",
+    "internalBulkMeasurementTopic": "sensate/internal/measurements/bulk"
+  }
+}
+
