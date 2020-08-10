@@ -1,0 +1,123 @@
+version: "3.1"
+services:
+  sensate_mqtthandler:
+    image: sensateiot/mqtthandler:staging
+    environment:
+      DOTNET_ENVIRONMENT: "Production"
+      ASPNETCORE_ENVIRONMENT: "Production"
+      SENSATE_MQTTHANDLER_APPSETTINGS: "/app/etc/appsettings.json"
+      PATH: "/usr/bin:/usr/sbin:/sbin:/bin:/app/bin:$PATH"
+    networks:
+      - base-net
+    volumes:
+      - ./MqttHandler:/app/etc:rw
+
+  sensate_websockethandler:
+    image: sensateiot/websockethandler:staging
+    environment:
+      DOTNET_ENVIRONMENT: "Production"
+      ASPNETCORE_ENVIRONMENT: "Production"
+      SENSATE_WEBSOCKETHANDLER_APPSETTINGS: "/app/etc/appsettings.json"
+      PATH: "/usr/bin:/usr/sbin:/sbin:/bin:/app/bin:$PATH"
+    ports:
+      - "4500:5500"
+    networks:
+      - base-net
+    volumes:
+      - ./WebSocketHandler:/app/etc:rw
+
+  sensate_triggerhandler:
+    image: sensateiot/triggerhandler:staging
+    environment:
+      DOTNET_ENVIRONMENT: "Production"
+      ASPNETCORE_ENVIRONMENT: "Production"
+      SENSATE_TRIGGERHANDLER_APPSETTINGS: "/app/etc/appsettings.json"
+      PATH: "/usr/bin:/usr/sbin:/sbin:/bin:/app/bin:$PATH"
+    networks:
+      - base-net
+    volumes:
+      - ./TriggerHandler:/app/etc:rw
+
+  sensate_livedatahandler:
+    image: sensateiot/livedatahandler:staging
+    ports:
+      - "5000:5000"
+    networks:
+      - base-net
+    volumes:
+      - ./LiveDataHandler:/app/dist/settings:rw
+      
+  sensate_authapi:
+    image: sensateiot/auth-api:staging
+    environment:
+      DOTNET_ENVIRONMENT: "Production"
+      ASPNETCORE_ENVIRONMENT: "Production"
+      SENSATE_AUTHAPI_APPSETTINGS: "/app/etc/appsettings.json"
+      PATH: "/usr/bin:/usr/sbin:/sbin:/bin:/app/bin:$PATH"
+    ports:
+      - "5000:5000"
+    networks:
+      - base-net
+    volumes:
+      - ./AuthApi:/app/etc:rw
+      
+  sensate_dataapi:
+    image: sensateiot/data-api:staging
+    environment:
+      DOTNET_ENVIRONMENT: "Production"
+      ASPNETCORE_ENVIRONMENT: "Production"
+      SENSATE_DATAAPI_APPSETTINGS: "/app/etc/appsettings.json"
+      PATH: "/usr/bin:/usr/sbin:/sbin:/bin:/app/bin:$PATH"
+    ports:
+      - "5100:5000"
+    networks:
+      - base-net
+    volumes:
+      - ./DataApi:/app/etc:rw
+
+  sensate_networkapi:
+    image: sensateiot/network-api:staging
+    environment:
+      DOTNET_ENVIRONMENT: "Production"
+      ASPNETCORE_ENVIRONMENT: "Production"
+      SENSATE_NETWORKAPI_APPSETTINGS: "/app/etc/appsettings.json"
+      PATH: "/usr/bin:/usr/sbin:/sbin:/bin:/app/bin:$PATH"
+    ports:
+      - "5200:5000"
+    networks:
+      - base-net
+    volumes:
+      - ./NetworkApi:/app/etc:rw
+
+  sensate_dashboardapi:
+    image: sensateiot/dashboard-api:staging
+    environment:
+      DOTNET_ENVIRONMENT: "Production"
+      ASPNETCORE_ENVIRONMENT: "Production"
+      SENSATE_DASHBOARDAPI_APPSETTINGS: "/app/etc/appsettings.json"
+      PATH: "/usr/bin:/usr/sbin:/sbin:/bin:/app/bin:$PATH"
+    ports:
+      - "5300:5000"
+    networks:
+      - base-net
+    volumes:
+      - ./DashboardApi:/app/etc:rw
+
+  sensate_blobapi:
+    image: sensateiot/blob-api:staging
+    environment:
+      DOTNET_ENVIRONMENT: "Production"
+      ASPNETCORE_ENVIRONMENT: "Production"
+      SENSATE_BLOBAPI_APPSETTINGS: "/app/etc/appsettings.json"
+      PATH: "/usr/bin:/usr/sbin:/sbin:/bin:/app/bin:$PATH"
+    ports:
+      - "5400:5000"
+    networks:
+      - base-net
+    volumes:
+      - ./BlobApi:/app/etc:rw
+      - ./Storage:/app/storage:rw
+
+networks:
+  base-net:
+    driver: bridge
