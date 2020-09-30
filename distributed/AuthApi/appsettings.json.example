@@ -49,7 +49,7 @@
     "JwtRefreshExpireMinutes": 43200,
     "JwtKey": "3i%bacH6yK8sm0#lYt0**aP567Fz^Ns3HKeZ3GiqlZ2&eFqjy0OqXO",
     "JwtIssuer": "api.dev.sensateiot.com:5000/auth",
-    "JwtExpireMinutes": 43200,
+    "JwtExpireMinutes": 10,
     "PrimaryAuthHost": true 
   },
 
