@@ -1,4 +1,4 @@
-﻿{
+{
   "Logging": {
     "IncludeScopes": false,
     "Debug": {
@@ -18,7 +18,7 @@
   },
 
   "System": {
-    "ProxyLevel": 1,
+    "ProxyLevel": 2,
     "InstanceName": "kerby"
   },
 
@@ -30,28 +30,27 @@
   "Database": {
     "MongoDB": {
       "DatabaseName": "Sensate",
-      "ConnectionString": "mongodb://sensate:mongopass@127.0.0.1:27017/admin",
+      "ConnectionString": "mongodb://user:password@localhost:27017/admin",
       "MaxConnections": 300
     },
     "PgSQL": {
-      "ConnectionString":
-        "User ID = postgres;Password=DefaultPassword;Server=127.0.0.1;Port=5432;Database=Sensate"
+      "ConnectionString": "User ID = user;Password=password;Server=localhost;Port=5432;Database=Sensate"
     },
     "Redis": {
-      "Host": "127.0.0.1",
+      "Host": "localhost",
       "InstanceName": "Sensate"
     }
   },
 
   "Authentication": {
     "PublicUrl": "login.dev.sensateiot.com/confirm",
-    "UpdateEmailUrl": "dev.sensateiot.com:4200/apps/dashboard/confirm-update-email",
+    "UpdateEmailUrl": "dev.sensateiot.com/apps/dashboard/confirm-update-email",
     "Scheme":  "http", 
     "JwtRefreshExpireMinutes": 43200,
-    "JwtKey": "3i%bacH6yK8sm0#lYt0**aP567Fz^Ns3HKeZ3GiqlZ2&eFqjy0OqXO",
+    "JwtKey": "SecretKey12345",
     "JwtIssuer": "api.dev.sensateiot.com:5000/auth",
     "JwtExpireMinutes": 43200,
-    "PrimaryAuthHost": false
+    "PrimaryAuthHost": false 
   },
 
   "Mqtt": {
@@ -60,16 +59,16 @@
       "Password": "",
       "Ssl": "false",
       "Port": 1883,
-      "Host": ""
+      "Host": "localhost",
     },
-    "InternalBroker": {
+	"InternalBroker": {
       "Username": "",
       "Password": "",
       "Ssl": "false",
       "Port": 1883,
-      "Host": "",
-      "InternalBlobTopic": "sensate/internal/blobs"
-    }
+      "Host": "localhost",
+      "InternalBlobTopic": "sensate/internal/blobs" 
+    } 
   },
 
   "Storage": {

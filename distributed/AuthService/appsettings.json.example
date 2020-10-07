@@ -1,9 +1,9 @@
 {
-  "Workers": 4,
+  "Workers": 3,
   "Interval": 1000,
   "InternalBatchSize": 10000,
   
-  "BindAddress": "0.0.0.0",
+  "BindAddress": "127.0.0.1",
   "Port": 8080,
 
   "Logging": {
@@ -14,24 +14,24 @@
   "Database": {
     "MongoDB": {
       "DatabaseName": "Sensate",
-      "ConnectionString": "mongodb://root:root@host.docker.internal:27017/?appname=authservice",
+      "ConnectionString": "mongodb://user:password@localhost:27017/admin?appname=authservice",
       "MaxConnections":300
     },
     "PgSQL": {
-      "ConnectionString": "user = postgres password = postgres host = host.docker.internal port = 5432 dbname = Sensate"
+      "ConnectionString": "user = sensate password = pw12345 host = localhost port = 5432 dbname = Sensate"
     }
   },
 
   "Mqtt": {
     "InternalBroker": {
-      "Username": "sensate",
-      "Password": "sensateiot",
+      "Username": "",
+      "Password": "",
       "Ssl": "false",
       "Port": 1883,
-      "Host": "tcp://host.docker.internal",
-      "ClientId": "dev-auth-01",
+      "Host": "tcp://localhost",
+      "ClientId": "prod-auth-01",
       "InternalCommandTopic": "sensate-auth/internal/commands",
-      "InternalBulkMeasurementTopic": "sensate-atuh/internal/measurements/bulk",
+      "InternalBulkMeasurementTopic": "sensate-auth/internal/measurements/bulk",
       "InternalBulkMessageTopic": "sensate-auth/internal/messages/bulk"
     }
   }

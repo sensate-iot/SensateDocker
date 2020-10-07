@@ -3,14 +3,14 @@
     "IncludeScopes": false,
     "Debug": {
       "LogLevel": {
-        "Default": "Warning",
+        "Default": "Information",
         "Microsoft": "Warning",
         "System": "Warning"
       }
     },
     "Console": {
       "LogLevel": {
-        "Default": "Warning",
+        "Default": "Information",
         "Microsoft": "Warning",
         "System": "Warning"
       }
@@ -23,16 +23,16 @@
     "Type": "Distributed"
   },
 
-  "Database" : {
-    "MongoDB" : {
+  "Database": {
+    "MongoDB": {
       "DatabaseName": "Sensate",
-      "ConnectionString": "mongodb://localhost:27017/Sensate",
+      "ConnectionString": "mongodb://user:password@localhost:27017/admin",
       "MaxConnections": 300
     },
-    "PgSQL" : {
-      "ConnectionString": "User ID = Username;Password=SomePassword;Server=localhost;Port=5432;Database=Sensate"
+    "PgSQL": {
+      "ConnectionString": "User ID = user;Password=password;Server=localhost;Port=5432;Database=Sensate"
     },
-    "Redis" : {
+    "Redis": {
       "Host": "localhost",
       "InstanceName": "Sensate"
     }
@@ -44,7 +44,7 @@
       "Password": "",
       "Ssl": "false",
       "Port": 1883,
-      "Host": "",
+      "Host": "localhost",
       "AuthorizedBulkMeasurementTopic": "$share/sensate-storage/sensate-auth/internal/measurements/bulk",
       "AuthorizedBulkMessageTopic": "$share/sensate-storage/sensate-auth/internal/messages/bulk",
       "InternalBulkMeasurementTopic": "sensate/internal/measurements/bulk",

@@ -1,4 +1,4 @@
-﻿{
+{
   "Logging": {
     "IncludeScopes": false,
     "Debug": {
@@ -18,40 +18,39 @@
   },
 
   "System": {
-    "ProxyLevel": 1,
-    "MeasurementAuthProxyUrl": "http://127.0.0.1:8080/v1/processor/measurements",
-    "MessageAuthProxyUrl": "http://127.0.0.1:8080/v1/processor/messages"
-  },
-
-  "Authentication": {
-    "PublicUrl": "login.dev.sensateiot.com/confirm",
-    "UpdateEmailUrl": "dev.sensateiot.com:4200/apps/dashboard/confirm-update-email",
-    "Scheme": "http",
-    "JwtRefreshExpireMinutes": 43200,
-    "JwtKey": "",
-    "JwtIssuer": "api.dev.sensateiot.com:5000/auth",
-    "JwtExpireMinutes": 43200,
-    "PrimaryAuthHost": false
+    "ProxyLevel": 2,
+    "MeasurementAuthProxyUrl": "http://localhost:8080/authorization/v1/processor/measurements",
+    "MessageAuthProxyUrl":     "http://localhost:8080/authorization/v1/processor/messages"
   },
 
   "Cache": {
     "Enabled": true,
-    "Interval": 1000, 
     "Type": "Distributed"
   },
 
   "Database": {
     "MongoDB": {
       "DatabaseName": "Sensate",
-      "ConnectionString": "mongodb://127.0.0.1:27017/Sensate",
-      "MaxConnections": 1000
+      "ConnectionString": "mongodb://user:password@localhost:27017/admin",
+      "MaxConnections": 300
     },
     "PgSQL": {
-      "ConnectionString": "User ID = postgres;Password=postgres;Server=127.0.0.1;Port=5432;Database=Sensate"
+      "ConnectionString": "User ID = user;Password=password;Server=localhost;Port=5432;Database=Sensate"
     },
     "Redis": {
-      "Host": "127.0.0.1",
+      "Host": "localhost",
       "InstanceName": "Sensate"
     }
-  }
+  },
+
+  "Authentication": {
+    "PublicUrl": "login.dev.sensateiot.com/confirm",
+    "UpdateEmailUrl": "dev.sensateiot.com/apps/dashboard/confirm-update-email",
+    "Scheme":  "http", 
+    "JwtRefreshExpireMinutes": 43200,
+    "JwtKey": "SecretKey12345",
+    "JwtIssuer": "api.dev.sensateiot.com:5000/auth",
+    "JwtExpireMinutes": 43200,
+    "PrimaryAuthHost": false 
+  },
 }

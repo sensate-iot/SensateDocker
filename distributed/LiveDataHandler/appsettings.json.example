@@ -1,28 +1,28 @@
 ﻿{
   "web": {
     "port": 5000,
-    "secret": "",
-    "timeout": 750
+    "secret": "Secret12345",
+    "timeout": 1500
   },
   "mongoDB": {
-    "connectionString": "mongodb://host.docker.internal:27017/Sensate",
-    "maxConnections":300
+    "connectionString": "mongodb://localhost:27017/Sensate",
+    "maxConnections": 300
   },
   "postgresql": {
-    "user": "postgres",
-    "host": "host.docker.internal",
-    "database": "sensate",
-    "password": "sensate",
-    "port": 5432 
+    "user": "sensate",
+    "host": "",
+    "database": "Sensate",
+    "password": "pw12345",
+    "port": 5432
   },
   "mqtt": {
     "username": "",
     "password": "",
     "ssl": "false",
     "port": 1883,
-    "host": "host.docker.internal",
+    "host": "localhost",
     "internalMeasurementTopic": "sensate/internal/measurements",
-    "internalBulkMeasurementTopic": "sensate/internal/measurements/bulk"
+    "internalBulkMeasurementTopic": "sensate/internal/measurements/bulk",
+    "topicShare": ""
   }
 }
-

@@ -19,20 +19,36 @@
 
   "Authentication": {
     "PublicUrl": "login.dev.sensateiot.com/confirm",
-    "UpdateEmailUrl": "dev.sensateiot.com:4200/apps/dashboard/confirm-update-email",
-    "Scheme": "http",
+    "UpdateEmailUrl": "dev.sensateiot.com/apps/dashboard/confirm-update-email",
+    "Scheme":  "http", 
     "JwtRefreshExpireMinutes": 43200,
-    "JwtKey": "",
+    "JwtKey": "SecretKey12345",
     "JwtIssuer": "api.dev.sensateiot.com:5000/auth",
     "JwtExpireMinutes": 43200,
     "PrimaryAuthHost": false 
   },
 
   "AllowedHosts": "*",
+
   "System": {
-    "ProxyLevel": 1,
+    "ProxyLevel": 2,
     "InstanceName": "kerby",
-    "MeasurementAuthProxyUrl": "http://127.0.0.1:8080/v1/processor/measurements",
-    "MessageAuthProxyUrl": "http://127.0.0.1:8080/v1/processor/messages"
+    "MeasurementAuthProxyUrl": "http://localhost:8080/authorization/v1/processor/measurements",
+    "MessageAuthProxyUrl":     "http://localhost:8080/authorization/v1/processor/messages"
+  },
+
+  "Database": {
+    "MongoDB": {
+      "DatabaseName": "Sensate",
+      "ConnectionString": "mongodb://user:password@localhost:27017/admin",
+      "MaxConnections": 300
+    },
+    "PgSQL": {
+      "ConnectionString": "User ID = user;Password=password;Server=localhost;Port=5432;Database=Sensate"
+    },
+    "Redis": {
+      "Host": "localhost",
+      "InstanceName": "Sensate"
+    }
   }
 }

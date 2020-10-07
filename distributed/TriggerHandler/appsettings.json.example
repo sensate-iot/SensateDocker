@@ -17,22 +17,20 @@
     }
   },
 
-  "InstanceName": "kerby-mqtt",
-
-  "Cache" : {
+  "Cache": {
     "Enabled": true,
-    "Interval": 1000,
+    "Interval": 1000, 
     "Type": "Distributed"
   },
 
   "Database": {
     "MongoDB": {
       "DatabaseName": "Sensate",
-      "ConnectionString": "mongodb://localhost:27017/Sensate",
+      "ConnectionString": "mongodb://user:password@localhost:27017/admin",
       "MaxConnections": 300
     },
     "PgSQL": {
-      "ConnectionString": "User ID = Username;Password=SomePassword;Server=localhost;Port=5432;Database=Sensate"
+      "ConnectionString": "User ID = user;Password=password;Server=localhost;Port=5432;Database=Sensate"
     },
     "Redis": {
       "Host": "localhost",
@@ -40,31 +38,16 @@
     }
   },
 
-  "Authentication": {
-    "PublicUrl": "login.dev.sensateiot.com/confirm",
-    "UpdateEmailUrl": "dev.sensateiot.com:4200/apps/dashboard/confirm-update-email",
-    "Scheme": "http",
-    "JwtRefreshExpireMinutes": 43200,
-    "JwtKey": "",
-    "JwtIssuer": "api.dev.sensateiot.com:5000/auth",
-    "JwtExpireMinutes": 43200,
-    "PrimaryAuthHost": false 
-  },
-
-  "Timeouts": {
-    "MessageTimeout": 5,
-    "MailTimeout": 2,
-    "MqttTimeout": 0,
-    "HttpTimeout": 0 
-  } ,
-
   "Mqtt": {
     "PublicBroker": {
       "Username": "",
       "Password": "",
       "Ssl": "false",
       "Port": 1883,
-      "Host": "",
+      "Host": "localhost",
+      "RealTimeShareTopic": "sensate/measurements/rt",
+      "ShareTopic": "sensate/measurements",
+      "BulkShareTopic": "sensate/measurements/bulk",
       "ActuatorTopic": "sensate/actuator/$sensorId"
     },
     "InternalBroker": {
@@ -72,34 +55,47 @@
       "Password": "",
       "Ssl": "false",
       "Port": 1883,
-      "Host": "",
+      "Host": "localhost",
       "AuthorizedBulkMeasurementTopic": "$share/trigger-service/sensate-auth/internal/measurements/bulk",
       "AuthorizedBulkMessageTopic": "$share/trigger-service/sensate-auth/internal/messages/bulk"
     }
   },
 
   "Mail": {
-    "Provider": "SendGrid",
+    "Provider": "SMTP",
+    "FromName": "Sensate IoT",
+    "From": "noreply@sensateiot.com",
     "SendGrid": {
-      "Username": "u-name",
-      "Key": "<sendgrid-key>"
+      "Username": "",
+      "Key": ""
     },
     "Smtp": {
       "Ssl": true,
       "Port": 587,
-      "Host": "mail.example.com",
-      "Username": "root@mail.com",
-      "Password": "SomePassword"
+      "Host": "",
+      "Username": "",
+      "Password": ""
     }
   },
 
-  "Text" : {
-    "Provider": "Twilio",
+  "Text": {
+    "Provider": "Twillio",
     "AlphaCode": "Sensate IoT",
     "Twilio": {
-      "AccountSid": "<sid>",
-      "AuthToken": "<auth token>",
-      "PhoneSid": "<name>" 
-    } 
-  } 
+      "AccountSid": "",
+      "AuthToken": "",
+      "PhoneSid": ""  
+    }
+  },
+
+  "Authentication": {
+    "PublicUrl": "login.dev.sensateiot.com/confirm",
+    "UpdateEmailUrl": "dev.sensateiot.com/apps/dashboard/confirm-update-email",
+    "Scheme":  "http", 
+    "JwtRefreshExpireMinutes": 43200,
+    "JwtKey": "SecretKey12345",
+    "JwtIssuer": "api.dev.sensateiot.com:5000/auth",
+    "JwtExpireMinutes": 43200,
+    "PrimaryAuthHost": false 
+  }
 }
